@@ -16,6 +16,6 @@ public class First
     [Params(1, 2)]
     public void Sum(int a, int b)
     {
-        Debug.Log("a+b=" + (a + b));
+        
     }
 }

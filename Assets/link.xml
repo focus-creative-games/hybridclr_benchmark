@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <linker>
    <!--No "preserve" attribute and no types specified means preserve all-->
-  <assembly fullname="UnityEngine"/>
-  <assembly fullname="UnityEngine.CoreModule"/>
-  <assembly fullname="System"/>
-  <assembly fullname="System.Core"/>
-  <assembly fullname="mscorlib"/>
-  <assembly fullname="Main"/>
-  <assembly fullname="System.Numerics"/>
+  <assembly fullname="UnityEngine" preserve="all"/>
+  <assembly fullname="UnityEngine.CoreModule" preserve="all"/>
+  <assembly fullname="System" preserve="all"/>
+  <assembly fullname="System.Core" preserve="all"/>
+  <assembly fullname="mscorlib" preserve="all"/>
+  <assembly fullname="Main" preserve="all"/>
+  <assembly fullname="AOT" preserve="all"/>
+  <assembly fullname="System.Numerics" preserve="all"/>
   
-  <assembly fullname="UnityEngine.UnityWebRequestModule"/>
-  <assembly fullname="System.Threading.Tasks"/>
+  <assembly fullname="UnityEngine.UnityWebRequestModule" preserve="all"/>
+  <assembly fullname="System.Threading.Tasks" preserve="all"/>
 </linker>

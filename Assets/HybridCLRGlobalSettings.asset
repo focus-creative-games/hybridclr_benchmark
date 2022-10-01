@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enable: 1
   cloneFromGitee: 1
-  hotUpdateAssemblyDefinitions: []
-  hotUpdateAssemblies:
-  - Assembly-CSharp
+  hotUpdateAssemblyDefinitions:
+  - {fileID: 5897886265953266890, guid: a591c53b1cc4c944d96b3c5914125d80, type: 3}
+  hotUpdateAssemblies: []
   outputLinkFile: HybridCLR/link.xml
   outputAOTGenericReferenceFile: Main/AOTGenericReferences.cs
   maxGenericReferenceIteration: 4

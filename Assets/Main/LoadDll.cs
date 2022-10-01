@@ -31,20 +31,21 @@ public class LoadDll : MonoBehaviour
     {
         var dlls = new string[]
         {
-            "Assembly-CSharp.dll",
-            "mscorlib.dll",
-            "System.dll",
-            "System.Core.dll",
-            "Main.dll",
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Main",
+            "AOT",
+            "Interpreter",
         };
         foreach (var dll in dlls)
         {
-            string dllPath = $"{Application.streamingAssetsPath}/{dll}";
+            string dllPath = $"{Application.streamingAssetsPath}/{dll}.dll";
             if (!dllPath.Contains("://"))
             {
                 dllPath = "file://" + dllPath;
             }
-            Debug.Log($"start download dll:{dll}");
+            Debug.Log($"start download dll:{dllPath}");
             UnityWebRequest www = UnityWebRequest.Get(dllPath);
             yield return www.SendWebRequest();
 
@@ -74,12 +75,13 @@ public class LoadDll : MonoBehaviour
 
     public Assembly LoadAssembly(string assName)
     {
-#if UNITY_EDITOR
-        return AppDomain.CurrentDomain.GetAssemblies().First(ass => ass.GetName().Name == assName);
-#else
-        byte[] dllBytes = LoadDll.GetDllBytes(assName + ".dll");
-        return System.Reflection.Assembly.Load(dllBytes);
-#endif
+        var aotAss = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(ass => ass.GetName().Name == assName);
+        if (aotAss != null)
+        {
+            return aotAss;
+        }
+        byte[] dllBytes = GetDllBytes(assName);
+        return Assembly.Load(dllBytes);
     }
 
 
@@ -91,10 +93,11 @@ public class LoadDll : MonoBehaviour
             "System",
             "System.Core",
             "Main",
+            "AOT",
         };
         foreach (string dll in aotDlls)
         {
-            byte[] dllBytes = GetDllBytes(dll + ".dll");
+            byte[] dllBytes = GetDllBytes(dll);
             LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(dllBytes);
             Debug.LogFormat("LoadMetadataForAOTAssembly:{0}. ret:{1}", dll, err);
         }
@@ -106,12 +109,11 @@ public class LoadDll : MonoBehaviour
         LoadAOTAssemblyMetadatas();
 #endif
 
-        var assemblyCSharp = LoadAssembly("Assembly-CSharp");
         var runner = new BenchmarkRunner(new BenchmarkRunner.Options()
         {
             WarmUpIteration = 3,
             DefaultBenchmarkIteration = 10,
-            BenchmarkAssemblyList = new List<Assembly> { assemblyCSharp },
+            BenchmarkAssemblyList = new List<Assembly> { LoadAssembly("AOT"), LoadAssembly("Interpreter") },
         });
 
         runner.Run();

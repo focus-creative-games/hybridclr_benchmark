@@ -23,7 +23,7 @@ namespace HybridCLR.Editor
 
             var buildOptions = BuildOptions.None;
 
-            string location = $"{outputPath}/HybridCLRTest.exe";
+            string location = $"{outputPath}/HybridCLRBenchmark.exe";
 
             Debug.Log("====> Build App");
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions()
@@ -45,7 +45,7 @@ namespace HybridCLR.Editor
 
             Debug.Log("====> Build AssetBundle");
             Debug.Log("====> 复制 AssetBundle");
-            CopyDlls(target, $"{outputPath}/HybridCLRTest_Data/StreamingAssets");
+            CopyDlls(target, $"{outputPath}/HybridCLRBenchmark_Data/StreamingAssets");
 
 #if UNITY_EDITOR
             Application.OpenURL($"file:///{outputPath}");
@@ -61,7 +61,7 @@ namespace HybridCLR.Editor
 
             var buildOptions = BuildOptions.None;
 
-            string location = outputPath + "/HybridCLRTest.apk";
+            string location = outputPath + "/HybridCLRBenchmark.apk";
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions()
             {
                 scenes = new string[] { "Assets/Scenes/main.unity" },
@@ -76,7 +76,7 @@ namespace HybridCLR.Editor
             Debug.Log("====> Build AssetBundle");
 
             // FIX ME! need copy dlls 
-            //CopyDlls($"{outputPath}/HybridCLRTest_Data/StreamingAssets");
+            //CopyDlls($"{outputPath}/HybridCLRBenchmark_Data/StreamingAssets");
 
             Debug.Log("====> 第2次打包");
             BuildPipeline.BuildPlayer(buildPlayerOptions);

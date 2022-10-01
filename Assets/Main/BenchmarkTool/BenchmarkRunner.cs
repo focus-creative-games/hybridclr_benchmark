@@ -99,14 +99,14 @@ namespace BenchmarkTool
                     CollectBenchmarkCases(type);
                 }
             }
-            Debug.Log($"total benchmark case count:{_benchmarkCases.Count}");
+            //Debug.Log($"total benchmark case count:{_benchmarkCases.Count}");
         }
 
         private void WarmUp()
         {
             for(int i = 0; i < WarmUpIteration; i++)
             {
-                Debug.Log($"WarmUp round[{i + 1}] begin");
+                //Debug.Log($"WarmUp round[{i + 1}] begin");
                 foreach (var bc in _benchmarkCases)
                 {
                     if (bc.Method.GetParameters().Length != 0)
@@ -121,7 +121,7 @@ namespace BenchmarkTool
                         RunCase(bc.Method, null);
                     }
                 }
-                Debug.Log($"WarmUp round[{i + 1}] end");
+                //Debug.Log($"WarmUp round[{i + 1}] end");
             }
         }
 

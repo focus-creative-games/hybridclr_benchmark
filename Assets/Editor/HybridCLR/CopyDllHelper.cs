@@ -18,6 +18,7 @@ namespace HybridCLR.Editor
             "System",
             "System.Core",
             "Main",
+            "AOT",
         };
 
 
@@ -65,7 +66,7 @@ namespace HybridCLR.Editor
         static void CopyDll2BuildDir64()
         {
             BuildTarget target = BuildTarget.StandaloneWindows64;
-            string outputPath = $"{Directory.GetParent(Application.dataPath)}/Build-Win64/build/bin/hybridclr_test_Data/StreamingAssets";
+            string outputPath = $"{Directory.GetParent(Application.dataPath)}/Build-Win64/build/bin/hybridclr_benchmark_Data/StreamingAssets";
             CopyHotfixAndAOTDll2BuildStreamingAssetsDir(target, outputPath);
         }
 
@@ -89,7 +90,7 @@ namespace HybridCLR.Editor
         static void CopyDll2BuildDir2()
         {
             BuildTarget target = BuildTarget.StandaloneWindows64;
-            string outputPath = $"{Directory.GetParent(Application.dataPath)}/Release-Win64/hybridclr_test_Data/StreamingAssets";
+            string outputPath = $"{Directory.GetParent(Application.dataPath)}/Release-Win64/hybridclr_benchmark_Data/StreamingAssets";
             CopyHotfixAndAOTDll2BuildStreamingAssetsDir(target, outputPath);
         }
     }

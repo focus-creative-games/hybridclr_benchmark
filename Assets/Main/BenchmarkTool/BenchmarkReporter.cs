@@ -25,7 +25,7 @@ namespace BenchmarkTool
             var logFileName = LogFileName;
             if (File.Exists(logFileName))
             {
-                File.Move(logFileName, $"{logDir}/benchmark-{DateTime.Now.ToString("yyyyMMdd-HHmmss")}.log");
+                File.Move(logFileName, $"{logDir}/benchmark-{DateTime.Now.ToString("yyyyMMdd-HHmmss")}.csv");
             }
             _logFileStream = File.OpenWrite(logFileName);
             _baseLogger = new StreamWriter(_logFileStream);
@@ -43,14 +43,18 @@ namespace BenchmarkTool
         public void GenerateReport(List<BenchmarkResult> results)
         {
             OpenLogFile();
-            _baseLogger.WriteLine($"method,params,iteration,min(ms),max(ms),middle(ms)");
+            _baseLogger.WriteLine($"assembly,method,params,min(ms),max(ms),average(ms), middle(ms)");
             foreach (var result in results)
             {
+                string assemblyName = result.Method.Module.Name;
+                assemblyName = assemblyName.Substring(0, assemblyName.IndexOf(".dll"));
                 long minCostTime = result.CostTimes.Min();
                 long maxCostTime = result.CostTimes.Max();
-                long averCostTime = (long)result.CostTimes.Average();
+                result.CostTimes.Sort((a, b) => a.CompareTo(b));
+                long midCostTime = result.CostTimes[result.CostTimes.Count / 2];
+                long averageCostTime = (long)result.CostTimes.Average();
                 string paramStr = result.Params != null ? string.Join("_", result.Params) : "";
-                string logStr = $"{result.Method.DeclaringType.FullName}::{result.Method.Name},{paramStr},{result.CostTimes.Count},{minCostTime},{maxCostTime},{averCostTime}";
+                string logStr = $"{assemblyName},{result.Method.DeclaringType.FullName}::{result.Method.Name},{paramStr},{minCostTime},{maxCostTime},{averageCostTime},{midCostTime}";
                 _baseLogger.WriteLine(logStr);
                 Debug.Log(logStr);
             }
