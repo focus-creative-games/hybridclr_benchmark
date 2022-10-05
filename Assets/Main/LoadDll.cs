@@ -111,8 +111,8 @@ public class LoadDll : MonoBehaviour
 
         var runner = new BenchmarkRunner(new BenchmarkRunner.Options()
         {
-            WarmUpIteration = 3,
-            DefaultBenchmarkIteration = 10,
+            WarmUpIteration = 2,
+            DefaultBenchmarkIteration = 5,
             BenchmarkAssemblyList = new List<Assembly> { LoadAssembly("AOT"), LoadAssembly("Interpreter") },
         });
 
