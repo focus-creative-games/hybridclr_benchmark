@@ -1,18 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <linker>
   <assembly fullname="Main">
+    <type fullname="AOTTypes.AOTForCallAbstracts" preserve="all" />
+    <type fullname="AOTTypes.AOTForCallAbstractsImpl" preserve="all" />
+    <type fullname="AOTTypes.AOTForCallFunctions" preserve="all" />
+    <type fullname="AOTTypes.AOTForCallInterfaces" preserve="all" />
+    <type fullname="AOTTypes.AOTForCallInterfacesImpl" preserve="all" />
+    <type fullname="AOTTypes.AOTForCallInterpFunctions" preserve="all" />
+    <type fullname="AOTTypes.AOTForFields" preserve="all" />
+    <type fullname="AOTTypes.AOTForNewObj" preserve="all" />
+    <type fullname="AOTTypes.AOTForNewObj0" preserve="all" />
+    <type fullname="AOTTypes.AOTForProperty" preserve="all" />
+    <type fullname="AOTTypes.AOTForStaticFields" preserve="all" />
     <type fullname="BenchmarkTool.BenchmarkAttribute" preserve="all" />
     <type fullname="BenchmarkTool.ParamsAttribute" preserve="all" />
   </assembly>
   <assembly fullname="mscorlib">
+    <type fullname="System.Array" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
+    <type fullname="System.Int32" preserve="all" />
     <type fullname="System.Object" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.CompilationRelaxationsAttribute" preserve="all" />
+    <type fullname="System.Runtime.CompilerServices.CompilerGeneratedAttribute" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.RuntimeCompatibilityAttribute" preserve="all" />
-    <type fullname="System.Threading.Thread" preserve="all" />
+    <type fullname="System.Runtime.CompilerServices.RuntimeHelpers" preserve="all" />
+    <type fullname="System.RuntimeFieldHandle" preserve="all" />
+    <type fullname="System.String" preserve="all" />
+    <type fullname="System.ValueType" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.CoreModule">
-    <type fullname="UnityEngine.Random" preserve="all" />
+    <type fullname="UnityEngine.Vector2" preserve="all" />
+    <type fullname="UnityEngine.Vector3" preserve="all" />
+    <type fullname="UnityEngine.Vector4" preserve="all" />
   </assembly>
 </linker>
