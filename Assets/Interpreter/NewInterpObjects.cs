@@ -1,13 +1,13 @@
 ﻿using AOTTypes;
+using Benchmarks.InterpTypes;
 using BenchmarkTool;
-using Interpreter.InterpTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interpreter
+namespace Benchmarks
 {
 
     public class NewInterpObjects
