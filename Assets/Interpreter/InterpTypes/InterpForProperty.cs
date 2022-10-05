@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Benchmarks.InterpTypes
+namespace InterpTypes
 {
     public class InterpForProperty
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Benchmarks.InterpTypes
+namespace InterpTypes
 {
     public class InterpForNewObj
     {

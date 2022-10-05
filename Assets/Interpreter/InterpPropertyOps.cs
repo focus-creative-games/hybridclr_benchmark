@@ -1,5 +1,5 @@
 ﻿using AOTTypes;
-using Benchmarks.InterpTypes;
+using InterpTypes;
 using BenchmarkTool;
 using System;
 using System.Collections.Generic;
